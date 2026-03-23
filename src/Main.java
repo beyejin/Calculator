@@ -8,10 +8,10 @@ public class Main{
         System.out.println("---계산기 프로그램---");
         System.out.println("종료를 원하시면 exit를 입력하시오");
 
-        int first,second;
+        int first=0,second=0;
 
         while (true) {
-            int result=0;
+            int result = 0;
 
             // ✅ 첫 번째 숫자 입력
             while (true) {
@@ -22,6 +22,10 @@ public class Main{
 
                 try {
                     first = Integer.parseInt(input1);  // 여기서 변환
+                    if (first < 0) {
+                        System.out.println("양의 정수만 입력해주세요.");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("올바르지 않은 입력값입니다.");
@@ -36,6 +40,10 @@ public class Main{
 
                 try {
                     second = Integer.parseInt(input2);  // 여기서 변환
+                    if (second < 0) {
+                        System.out.println("양의 정수만 입력해주세요.");
+                        continue;
+                    }
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("올바르지 않은 입력값입니다.");
@@ -43,7 +51,9 @@ public class Main{
             }
             // ✅ 연산자 입력
             System.out.print("연산자를 입력해주세요: ");
-            char type = sc.next().charAt(0);
+            String opInput = sc.next();
+            if (opInput.equals("exit")) return;
+            char type = opInput.charAt(0);
 
             switch (type) {
                 case '+':
@@ -68,11 +78,13 @@ public class Main{
                     result = first * second;
                     System.out.println(first+"*"+second+"="+result);
                     break;
+
+                default:
+                    System.out.println("올바른 연산자를 입력해주세요.");
+
             }
 
         }
-
-
     }
 
 }
