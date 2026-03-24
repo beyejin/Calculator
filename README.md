@@ -10,15 +10,6 @@ Java를 활용하여 구현한 콘솔 기반 계산기 프로젝트입니다.
 
 ---
 
-## 🛠️ 프로젝트 구조
-
-```bash
-CalculatorProject/
-├── src/
-│   ├── App.java          # 프로그램 실행 및 사용자 입력 처리
-│   ├── Calculator.java   # 계산 로직 및 결과 저장 관리
-├── README.md
-
 각 스텝별 구현 사항
 ## ⚙️ 각 스텝별 구현 사항
 
