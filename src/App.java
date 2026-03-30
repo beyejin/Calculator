@@ -82,6 +82,25 @@ public class App {
             System.out.println("목록: " + results);
 
             while (true) {
+                while (true) {
+                    System.out.print("기준값을 입력하세요: ");
+                    String valueInput = sc.next();
+
+                    if (valueInput.equalsIgnoreCase("exit")) {
+                        System.out.println("프로그램을 종료합니다.");
+                        sc.close();
+                        return;
+                    }
+
+                    try {
+                        double value = Double.parseDouble(valueInput);
+                        ArrayList<Double> filtered = cal.findGreaterResults(value);
+                        System.out.println(value + "보다 큰 결과들: " + filtered);
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("올바른 숫자를 입력해주세요.");
+                    }
+                }
                 System.out.print("제일 오래된 값 삭제를 원합니까? (y/n): ");
                 char rmInput = sc.next().charAt(0);
 
@@ -104,25 +123,7 @@ public class App {
                 }
                 break;
             }
-            while (true) {
-                System.out.print("기준값을 입력하세요: ");
-                String valueInput = sc.next();
 
-                if (valueInput.equalsIgnoreCase("exit")) {
-                    System.out.println("프로그램을 종료합니다.");
-                    sc.close();
-                    return;
-                }
-
-                try {
-                    double value = Double.parseDouble(valueInput);
-                    ArrayList<Double> filtered = cal.findGreaterResults(value);
-                    System.out.println(value + "보다 큰 결과들: " + filtered);
-                    break;
-                } catch (NumberFormatException e) {
-                    System.out.println("올바른 숫자를 입력해주세요.");
-                }
-            }
         }
     }
 }
