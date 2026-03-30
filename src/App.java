@@ -11,8 +11,8 @@ public class App {
         System.out.println("종료를 원하시면 exit를 입력하시오");
 
         while (true) {
-            double first = 0;
-            double second = 0;
+            double first ;
+            double second ;
 
             while (true) { // ^.^ 첫 번째 숫자 입력
                 System.out.print("첫번째 수를 입력하시오: ");
@@ -54,10 +54,16 @@ public class App {
                 sc.close();
                 return;
             }
-            char type = opInput.charAt(0);
-            double result = cal.calculate(type, first, second);
+            OperatorType operator;
+            try{
+                operator=OperatorType.fromChar(opInput.charAt(0));
+            }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+                continue;
+            }
+            double result = cal.calculate(operator, first, second);
             cal.setResults(result);
-            System.out.println(first + " " + type + " " + second + " = " + result);
+            System.out.println(first + " " + operator + " " + second + " = " + result);
             ArrayList<Double> results = cal.getResults();
             System.out.println("목록: " + results);
 
