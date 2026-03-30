@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Calculator<Double> cal = new Calculator<>();
+        ArithmeticCalculator<Double> cal = new ArithmeticCalculator<>();
 
         System.out.println("---계산기 프로그램---");
         System.out.println("종료를 원하시면 exit를 입력하시오");
@@ -103,6 +103,25 @@ public class App {
                         continue;
                 }
                 break;
+            }
+            while (true) {
+                System.out.print("기준값을 입력하세요: ");
+                String valueInput = sc.next();
+
+                if (valueInput.equalsIgnoreCase("exit")) {
+                    System.out.println("프로그램을 종료합니다.");
+                    sc.close();
+                    return;
+                }
+
+                try {
+                    double value = Double.parseDouble(valueInput);
+                    ArrayList<Double> filtered = cal.findGreaterResults(value);
+                    System.out.println(value + "보다 큰 결과들: " + filtered);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("올바른 숫자를 입력해주세요.");
+                }
             }
         }
     }

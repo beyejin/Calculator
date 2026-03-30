@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
-public class Calculator<T extends Number> {
+public class ArithmeticCalculator<T extends Number> {
 
     private ArrayList<Double> results = new ArrayList<>();
 
@@ -19,6 +20,12 @@ public class Calculator<T extends Number> {
             System.out.println("삭제할 결과가 없습니다.");
         }
     }
+    public ArrayList<Double> findGreaterResults(double value) {
+        return results.stream()
+                .filter(r -> r > value)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
     public double calculate(OperatorType type, T first, T second) {
         double a = first.doubleValue();
         double b = second.doubleValue();
