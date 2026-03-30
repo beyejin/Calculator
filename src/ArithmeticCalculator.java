@@ -26,6 +26,7 @@ public class ArithmeticCalculator<T extends Number> {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
+
     public double calculate(OperatorType type, T first, T second) {
         double a = first.doubleValue();
         double b = second.doubleValue();
