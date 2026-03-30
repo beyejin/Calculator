@@ -1,7 +1,6 @@
-import java.security.spec.RSAOtherPrimeInfo;
 import java.util.ArrayList;
 
-public class Calculator {
+public class Calculator<T extends Number> {
 
     private ArrayList<Double> results = new ArrayList<>();
 
@@ -20,26 +19,28 @@ public class Calculator {
             System.out.println("삭제할 결과가 없습니다.");
         }
     }
-    public double calculate(OperatorType type, double first, double second) {
+    public double calculate(OperatorType type, T first, T second) {
+        double a = first.doubleValue();
+        double b = second.doubleValue();
+
         switch (type) {
             case ADD:
-                return first + second;
+                return a+b;
 
             case SUB:
-                return first - second;
+                return a-b;
 
             case MUL:
-                return first * second;
+                return a*b;
 
             case DIV:
-                if (second == 0) {
+                if (b == 0) {
                     throw new ArithmeticException("0으로 나눌 수 없습니다.");
                 }
-                return first / second;
+                return a/b;
 
             default:
-                System.out.println("올바른 연산자를 입력해주세요.");
-                return 0;
+                throw new IllegalArgumentException("올바른 연산자를 입력해주세요.");
         }
     }
 
